@@ -1,0 +1,46 @@
+﻿@model IEnumerable<EcommerceCasaMate.Models.Producto>
+
+@{
+    ViewData["Title"] = "Panel de Productos";
+}
+
+<h1>Panel de Productos</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Crear Nuevo Producto</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Categoría</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Precio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stock)
+                </td>
+                <td>
+                    @item.IdCategoriaNavigation?.NombreCategoria
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdProducto" class="btn btn-sm btn-warning">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdProducto" class="btn btn-sm btn-info">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdProducto" class="btn btn-sm btn-danger">Borrar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

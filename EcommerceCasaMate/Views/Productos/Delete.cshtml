@@ -1,0 +1,26 @@
+﻿@model EcommerceCasaMate.Models.Producto
+
+@{
+    ViewData["Title"] = "Borrar Producto";
+}
+
+<h1>Borrar Producto</h1>
+<h3 class="text-danger mt-3">¿Estás seguro que querés borrar este producto?</h3>
+<p class="text-muted">Esta acción no se puede deshacer.</p>
+<hr />
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-3 fw-bold">Nombre</dt>
+        <dd class="col-sm-9">@Model.Nombre</dd>
+
+        <dt class="col-sm-3 fw-bold">Precio</dt>
+        <dd class="col-sm-9">$ @Model.Precio</dd>
+    </dl>
+
+    <form asp-action="Delete" class="mt-4">
+        <input type="hidden" asp-for="IdProducto" />
+        <input type="submit" value="Borrar Definitivamente" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary ms-2">Cancelar y volver</a>
+    </form>
+</div>
